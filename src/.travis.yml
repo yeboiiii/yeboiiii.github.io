@@ -5,3 +5,27 @@ deploy:
   keep_history: true
   on:
     branch: main
+
+sudo: false
+language: node_js
+node_js:
+  - 10 # use nodejs v10 LTS
+cache: npm
+branches:
+  only:
+    - src # build from src branch
+script:
+  - chmod +x ./build.sh
+  - ./build.sh
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  target_branch: main
+  on:
+    branch: main
+  fqdn: yeboiiii.github.io
+  on:
+    branch: src
+  local-dir: public
