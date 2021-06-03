@@ -1,21 +1,22 @@
-sudo: false
-language: node_js
-node_js:
-  - 10 # use nodejs v10 LTS
+--- 
+branches: 
+  only: 
+    - src
 cache: npm
-branches:
-  only:
-    - src # build from src branch
-script:
-  - chmod +x ./build.sh
-  - ./build.sh
-deploy:
-  provider: pages
-  skip-cleanup: true
+deploy: 
+  fqdn: ~
   github-token: $GH_TOKEN
   keep-history: true
-  target_branch: master
-  fqdn: # enter your domain here
-  on:
-    branch: src
   local-dir: public
+  provider: pages
+  skip-cleanup: true
+  target_branch: master
+  true: 
+    branch: src
+language: node_js
+node_js: 
+  - 10
+script: 
+  - "chmod +x ./build.sh"
+  - ./build.sh
+sudo: false
