@@ -1,21 +1,7 @@
-sudo: false
-language: node_js
-node_js:
-  - 10 # use nodejs v10 LTS
-cache: npm
-branches:
-  only:
-    - src # build from src branch
-script:
-  - chmod +x ./build.sh
-  - ./build.sh
 deploy:
   provider: pages
-  skip-cleanup: true
-  github-token: $GH_TOKEN
-  keep-history: true
-  target_branch: main
-  fqdn: # enter your domain here
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
   on:
     branch: main
-  local-dir: public
